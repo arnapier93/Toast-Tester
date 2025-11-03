@@ -105,15 +105,6 @@ class ToasterScene extends SceneManager {
       this.chewingNoise.duration = 0.75;
     });
     
-    
-    this.sneeze = new THREE.Audio(this.listener);
-    audioLoader.load("./sounds/130977__oldedgar__sneeze-ac-3.wav", (buff)=>{
-      this.sneeze.setBuffer(buff);
-      this.sneeze.setLoop(false);
-      this.sneeze.setVolume(2.0);
-      
-    });
-    
     // precalculated animation curves
     this.removeCurvePoints = MatrixHelper.func2pointsSpecified((value)=>{
       return new THREE.Vector3(-0.25, -1 * Math.pow(value - 3, 2) + 9, -0.25 + value);
@@ -319,8 +310,6 @@ class ToasterScene extends SceneManager {
         // wind up to pop the toast
         if (input.keyPressed("Space")) {
           this.stage = Stages.ToasterSpring;
-          this.sneeze.offset = 0.2;
-          this.sneeze.play();  // comic sneeze sound plays between both stages
           this.toasterFrame = 0;
         }
         
